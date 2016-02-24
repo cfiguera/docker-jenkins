@@ -11,9 +11,9 @@ RUN locale-gen es_ES.UTF-8
 ENV LANG es_ES.UTF-8 
 ENV LC_ALL es_ES.UTF-8
 
-RUN apt-get update && apt-get install -y moreutils curl wget gdebi git openssh-client openjdk-7-jre-headless
-RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
-RUN gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+RUN apt-get update && apt-get install -y moreutils curl wget gdebi git openssh-client openjdk-7-jre-headless && \
+    wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
+    gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
 ADD files/settings.xml /opt/settings.xml
 ADD http://mirrors.jenkins-ci.org/war/$JENKINS_VERSION/jenkins.war /opt/jenkins.war
